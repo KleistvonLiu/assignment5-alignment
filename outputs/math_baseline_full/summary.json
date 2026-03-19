@@ -1,0 +1,22 @@
+{
+  "num_examples": 5000,
+  "format_reward_mean": 0.1748,
+  "answer_reward_mean": 0.0274,
+  "reward_mean": 0.0274,
+  "category_counts": {
+    "incorrect_format": 4126,
+    "correct_format_only": 737,
+    "correct_format_and_answer": 137
+  },
+  "validation_path": "data/MATH/validation.jsonl",
+  "hendrycks_math_root": null,
+  "prompt_path": "cs336_alignment/prompts/r1_zero.prompt",
+  "results_path": "outputs/math_baseline_full/results.jsonl",
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "stop": "</answer>",
+    "include_stop_str_in_output": true
+  }
+}

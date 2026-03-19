@@ -1,3 +1,9 @@
+export CUDA_HOME=/home/kleist/miniconda3/envs/cuda-12.8-build
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib:$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+export MAX_JOBS=8
+uv sync
+
 # CS336 Spring 2025 Assignment 5: Alignment
 
 For a full description of the assignment, see the assignment handout at
