@@ -307,9 +307,10 @@ def evaluate_policy(
     summary["num_eval_examples"] = len(eval_examples)
     summary_path.write_text(json.dumps(summary, indent=2) + "\n")
 
+    generation_log_summary = None
     if num_log_generations > 0:
         responses = load_logged_responses(results_path, limit=num_log_generations)
-        log_generations(
+        generation_log_output = log_generations(
             model=policy,
             tokenizer=tokenizer,
             prompts=prompts[: len(responses)],
@@ -320,6 +321,8 @@ def evaluate_policy(
             step=eval_step,
             wandb_run=wandb_run,
         )
+        generation_log_summary = generation_log_output["summary"]
+        summary["logged_generation_summary"] = generation_log_summary
 
     if wandb_run is not None:
         wandb_payload = {
@@ -328,6 +331,9 @@ def evaluate_policy(
             "eval/format_reward_mean": summary["format_reward_mean"],
             "eval/reward_mean": summary["reward_mean"],
         }
+        if generation_log_summary is not None:
+            wandb_payload["eval/avg_token_entropy"] = generation_log_summary["avg_token_entropy"]
+            wandb_payload["eval/avg_response_length"] = generation_log_summary["avg_response_length"]
         for category, count in summary["category_counts"].items():
             wandb_payload[f"eval/{category}"] = count
         wandb_run.log(wandb_payload)
