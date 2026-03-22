@@ -1,0 +1,3 @@
+{"ei_step": 1, "num_questions": 7500, "num_rollouts": 15000, "num_filtered_sft_examples": 464, "avg_reward": 0.030933333333333334, "retention_rate": 0.030933333333333334}
+{"ei_step": 2, "num_questions": 7500, "num_rollouts": 15000, "num_filtered_sft_examples": 2715, "avg_reward": 0.181, "retention_rate": 0.181}
+{"ei_step": 3, "num_questions": 7500, "num_rollouts": 15000, "num_filtered_sft_examples": 4165, "avg_reward": 0.2776666666666667, "retention_rate": 0.2776666666666667}

@@ -1,0 +1,5 @@
+{"ei_step": 1, "num_questions": 512, "num_rollouts": 2048, "num_filtered_sft_examples": 63, "avg_reward": 0.03076171875, "retention_rate": 0.03076171875}
+{"ei_step": 2, "num_questions": 512, "num_rollouts": 2048, "num_filtered_sft_examples": 606, "avg_reward": 0.2958984375, "retention_rate": 0.2958984375}
+{"ei_step": 3, "num_questions": 512, "num_rollouts": 2048, "num_filtered_sft_examples": 760, "avg_reward": 0.37109375, "retention_rate": 0.37109375}
+{"ei_step": 4, "num_questions": 512, "num_rollouts": 2048, "num_filtered_sft_examples": 787, "avg_reward": 0.38427734375, "retention_rate": 0.38427734375}
+{"ei_step": 5, "num_questions": 512, "num_rollouts": 2048, "num_filtered_sft_examples": 725, "avg_reward": 0.35400390625, "retention_rate": 0.35400390625}

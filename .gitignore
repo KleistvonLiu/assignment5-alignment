@@ -3,7 +3,9 @@ models/
 data/
 
 outputs/*/checkpoint*
-*/final_model/
+outputs/*/final_model/
+outputs/*/evals/
+outputs/*/ei_*/
 
 nav
 tags

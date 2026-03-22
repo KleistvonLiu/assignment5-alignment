@@ -1,0 +1,4 @@
+{"train_step": 1, "epoch": 1, "train/loss": 55.75, "train/avg_token_entropy": 0.7753623127937317, "train/grad_norm": 692.0}
+{"train_step": 2, "epoch": 1, "train/loss": 40.0, "train/avg_token_entropy": 0.2329932004213333, "train/grad_norm": 764.0}
+{"train_step": 3, "epoch": 1, "train/loss": 92.0, "train/avg_token_entropy": 0.5, "train/grad_norm": 956.0}
+{"train_step": 4, "epoch": 1, "train/loss": 43.0, "train/avg_token_entropy": 0.44480520486831665, "train/grad_norm": 632.0}

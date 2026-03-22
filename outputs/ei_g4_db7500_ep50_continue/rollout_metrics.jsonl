@@ -1,0 +1,5 @@
+{"ei_step": 1, "num_questions": 7500, "num_rollouts": 15000, "num_filtered_sft_examples": 4247, "avg_reward": 0.28313333333333335, "retention_rate": 0.28313333333333335}
+{"ei_step": 2, "num_questions": 7500, "num_rollouts": 15000, "num_filtered_sft_examples": 4367, "avg_reward": 0.29113333333333336, "retention_rate": 0.29113333333333336}
+{"ei_step": 3, "num_questions": 7500, "num_rollouts": 15000, "num_filtered_sft_examples": 4524, "avg_reward": 0.3016, "retention_rate": 0.3016}
+{"ei_step": 4, "num_questions": 7500, "num_rollouts": 15000, "num_filtered_sft_examples": 5773, "avg_reward": 0.3848666666666667, "retention_rate": 0.3848666666666667}
+{"ei_step": 5, "num_questions": 7500, "num_rollouts": 15000, "num_filtered_sft_examples": 6202, "avg_reward": 0.41346666666666665, "retention_rate": 0.41346666666666665}

@@ -1,0 +1,1 @@
+{"train_step": 1, "rollout_step": 1, "epoch_within_rollout": 1, "train/loss": 0.0, "train/avg_token_entropy": 1.908203125, "train/grad_norm": 0.0, "train/raw_reward_mean": 0.0, "train/advantage_mean": 0.0, "train/clip_fraction": 0.0}

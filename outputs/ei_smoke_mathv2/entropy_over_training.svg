@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400">
+  <rect width="640" height="400" fill="white" />
+  <text x="320.00" y="20" font-size="18" text-anchor="middle" fill="#111">Expert Iteration Response Entropy</text>
+  <line x1="70" y1="346.00" x2="616" y2="346.00" stroke="#ddd" stroke-width="1" /> <line x1="70" y1="267.50" x2="616" y2="267.50" stroke="#ddd" stroke-width="1" /> <line x1="70" y1="189.00" x2="616" y2="189.00" stroke="#ddd" stroke-width="1" /> <line x1="70" y1="110.50" x2="616" y2="110.50" stroke="#ddd" stroke-width="1" /> <line x1="70" y1="32.00" x2="616" y2="32.00" stroke="#ddd" stroke-width="1" />
+  <line x1="70" y1="32" x2="70" y2="346" stroke="#333" stroke-width="1.5" />
+  <line x1="70" y1="346" x2="616" y2="346" stroke="#333" stroke-width="1.5" />
+  <polyline fill="none" stroke="#1f77b4" stroke-width="2.5" points="70.00,346.00 616.00,32.00" />
+  <circle cx="70.00" cy="346.00" r="4" fill="#1f77b4" />
+<circle cx="616.00" cy="32.00" r="4" fill="#1f77b4" />
+  <text x="60" y="350.00" font-size="12" text-anchor="end" fill="#333">0.552</text> <text x="60" y="271.50" font-size="12" text-anchor="end" fill="#333">0.640</text> <text x="60" y="193.00" font-size="12" text-anchor="end" fill="#333">0.727</text> <text x="60" y="114.50" font-size="12" text-anchor="end" fill="#333">0.815</text> <text x="60" y="36.00" font-size="12" text-anchor="end" fill="#333">0.903</text>
+  <text x="70.00" y="366" font-size="12" text-anchor="middle" fill="#333">0</text>
+<text x="616.00" y="366" font-size="12" text-anchor="middle" fill="#333">1</text>
+  <text x="320.00" y="388" font-size="14" text-anchor="middle" fill="#111">EI Step</text>
+  <text x="18" y="200.00" font-size="14" text-anchor="middle" fill="#111" transform="rotate(-90 18 200.00)">Average Token Entropy</text>
+</svg>
