@@ -188,6 +188,7 @@ def init_vllm(
     device: str,
     seed: int,
     gpu_memory_utilization: float = 0.85,
+    enforce_eager: bool = False,
 ) -> LLM:
     from vllm import LLM
     from vllm.model_executor import set_random_seed as vllm_set_random_seed
@@ -205,6 +206,7 @@ def init_vllm(
             dtype=torch.bfloat16,
             enable_prefix_caching=True,
             gpu_memory_utilization=gpu_memory_utilization,
+            enforce_eager=enforce_eager,
         )
 
 
@@ -212,6 +214,12 @@ def load_policy_into_vllm_instance(policy: PreTrainedModel, llm: LLM) -> None:
     state_dict = policy.state_dict()
     llm_model = llm.llm_engine.model_executor.driver_worker.model_runner.model
     llm_model.load_weights(state_dict.items())
+    # Prefix cache entries were computed under the previous policy weights.
+    # After hot-swapping weights into the existing vLLM instance, clear them so
+    # generation never reuses stale KV caches.
+    if hasattr(llm, "reset_prefix_cache"):
+        cache_reset_ok = llm.reset_prefix_cache()
+        logger.info("Reset vLLM prefix cache after weight load: success=%s", cache_reset_ok)
 
 
 def setup_wandb(args: argparse.Namespace) -> Any | None:
@@ -272,7 +280,8 @@ def evaluate_policy(
     eval_step: int,
     num_eval_examples: int,
     num_log_generations: int,
-    wandb_run: Any | None,
+    log_example_details: bool = True,
+    wandb_run: Any | None = None,
 ) -> dict[str, Any]:
     from vllm import SamplingParams
 
@@ -319,6 +328,7 @@ def evaluate_policy(
             reward_fn=r1_zero_reward_fn,
             log_prefix="eval",
             step=eval_step,
+            log_example_details=log_example_details,
             wandb_run=wandb_run,
         )
         generation_log_summary = generation_log_output["summary"]

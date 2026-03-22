@@ -86,6 +86,7 @@ def log_generations(
     log_prefix: str = "eval",
     step: int | None = None,
     num_examples_to_log: int | None = None,
+    log_example_details: bool = True,
     wandb_run: Any | None = None,
 ) -> dict[str, Any]:
     """Generate or score responses and log per-example diagnostics.
@@ -181,17 +182,27 @@ def log_generations(
             }
             records.append(record)
 
-            active_logger.info(
-                "%s generation %d\nprompt: %s\nresponse: %s\nground_truth: %s\nmetrics: %s\navg_token_entropy: %.4f\nresponse_length: %.1f",
-                log_prefix,
-                idx,
-                prompt,
-                response,
-                _to_display_text(ground_truth),
-                metrics,
-                entropy_value,
-                response_length,
-            )
+            if log_example_details:
+                active_logger.info(
+                    "%s generation %d\nprompt: %s\nresponse: %s\nground_truth: %s\nmetrics: %s\navg_token_entropy: %.4f\nresponse_length: %.1f",
+                    log_prefix,
+                    idx,
+                    prompt,
+                    response,
+                    _to_display_text(ground_truth),
+                    metrics,
+                    entropy_value,
+                    response_length,
+                )
+            else:
+                active_logger.info(
+                    "%s generation %d | metrics=%s | avg_token_entropy=%.4f | response_length=%.1f",
+                    log_prefix,
+                    idx,
+                    metrics,
+                    entropy_value,
+                    response_length,
+                )
 
         summary = {
             "num_examples": len(records),
