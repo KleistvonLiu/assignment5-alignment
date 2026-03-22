@@ -2,6 +2,9 @@
 models/
 data/
 
+outputs/*/checkpoint*
+*/final_model/
+
 nav
 tags
 
