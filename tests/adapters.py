@@ -8,6 +8,9 @@ from torch import Tensor
 from torch.utils.data import Dataset
 from transformers import PreTrainedTokenizerBase
 
+from cs336_alignment.alignment_data import PackedSFTDataset, iterate_batches
+from cs336_alignment.alignment_metrics import parse_gsm8k_response, parse_mmlu_response
+from cs336_alignment.dpo import compute_per_instance_dpo_loss
 from cs336_alignment.grpo import (
     compute_grpo_clip_loss,
     compute_group_normalized_rewards,
@@ -373,7 +376,12 @@ def get_packed_sft_dataset(
         "input_ids" contains the token IDs for the language modeling inputs, and "labels" contains
         the token IDs for the language modeling labels.
     """
-    raise NotImplementedError
+    return PackedSFTDataset(
+        tokenizer=tokenizer,
+        dataset_path=dataset_path,
+        seq_length=seq_length,
+        shuffle=shuffle,
+    )
 
 
 def run_iterate_batches(
@@ -396,7 +404,11 @@ def run_iterate_batches(
     Returns:
         Iterable over batches, where each batch has size `batch_size`.
     """
-    raise NotImplementedError
+    return iterate_batches(
+        dataset=dataset,
+        batch_size=batch_size,
+        shuffle=shuffle,
+    )
 
 
 def run_parse_mmlu_response(
@@ -422,7 +434,10 @@ def run_parse_mmlu_response(
         str (one of "A", "B", "C", or "D") if the model output can be parsed into a prediction,
         else None.
     """
-    raise NotImplementedError
+    return parse_mmlu_response(
+        mmlu_example=mmlu_example,
+        model_output=model_output,
+    )
 
 
 def run_parse_gsm8k_response(
@@ -439,7 +454,7 @@ def run_parse_gsm8k_response(
         str with the predicted numeric answer if the model output can be parsed into a prediction,
         else None.
     """
-    raise NotImplementedError
+    return parse_gsm8k_response(model_output=model_output)
 
 
 def run_compute_per_instance_dpo_loss(
@@ -474,4 +489,12 @@ def run_compute_per_instance_dpo_loss(
     Returns:
         torch.Tensor with the DPO loss for this example.
     """
-    raise NotImplementedError
+    return compute_per_instance_dpo_loss(
+        lm=lm,
+        lm_ref=lm_ref,
+        tokenizer=tokenizer,
+        beta=beta,
+        prompt=prompt,
+        response_chosen=response_chosen,
+        response_rejected=response_rejected,
+    )
